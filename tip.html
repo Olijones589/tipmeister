@@ -4,6 +4,9 @@
 <style>
 	body {
  		font-family: "Roboto Slab", sans-serif;
+		margin: auto;
+  		width: 50%;
+  		padding: 10px;
 	}
 	.fancy_input {
                 font-size: 14px;
@@ -45,7 +48,7 @@
                         background-color: #0d6efd;
                         border-color: #0d6efd;
                     }
-        }  	
+        }
 </style>
 <input id="percent" class="fancy_input"><h2>Percent</h2></input><br>
 <input id="amount" class="fancy_input"><h2>Bill</h2></input><br>
@@ -56,9 +59,12 @@
 	const percent = document.getElementById('percent');
 	const amount  = document.getElementById('amount');
 	const final_amount = document.getElementById('final_amount');
-	
+	var tip = null;
 	function calc() {
-		final_amount.innerText = '$';
-		final_amount.innerText += Math.round(parseFloat(amount.value.replace('$', '')) / 100 * parseFloat(percent.value.replace('%', ''))*100)/100;
+		final_amount.innerText = '(tip) $';
+		tip = Math.round(parseFloat(amount.value.replace('$', '')) / 100 * parseFloat(percent.value.replace('%', ''))*100)/100;
+		final_amount.innerText += `${tip}`
+		final_amount.innerText += ' + $' + `${amount.value}` + ' = $';
+		final_amount.innerText += tip + parseFloat(amount.value.replace('$', ''));	
 	}
 </script>

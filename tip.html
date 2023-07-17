@@ -52,20 +52,25 @@
 </style>
 <input id="percent" class="fancy_input"><h2>Percent</h2></input><br>
 <input id="amount" class="fancy_input"><h2>Bill</h2></input><br>
+<input id="people" class="fancy_input"><h2>People (Splits total bill)</h2></input><br>
 <p>Automatically calculates result!</p>
 <h1 id='final_amount'></h1>
 
 <script>
 	const percent = document.getElementById('percent');
 	const amount  = document.getElementById('amount');
+	const people  = document.getElementById('people');
 	const final_amount = document.getElementById('final_amount');
+	people.value = "1";
 	var tip = null;
+	var final = null;
 	function calc() {
 		final_amount.innerText = '(tip) $';
 		tip = Math.round(parseFloat(amount.value.replace('$', '')) / 100 * parseFloat(percent.value.replace('%', ''))*100)/100;
+		final = (tip + parseFloat(amount.value.replace('$', ''))) / people;
 		final_amount.innerText += `${tip}`
-		final_amount.innerText += ' + $' + `${amount.value}` + ' = $';
-		final_amount.innerText += tip + parseFloat(amount.value.replace('$', ''));	
+		final_amount.innerText += ' + $' + `${amount.value}` + ` / ${people.value}` + ' = $';
+		final_amount.innerText += final;	
 	}
 	setInterval(calc, 100);
 </script>

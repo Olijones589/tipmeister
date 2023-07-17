@@ -52,7 +52,7 @@
 </style>
 <input id="percent" class="fancy_input"><h2>Percent</h2></input><br>
 <input id="amount" class="fancy_input"><h2>Bill</h2></input><br>
-<button onclick="calc();" class="fancy_button"><h2>Calculate</h2></button>
+<p>Automatically calculates result!</p>
 <h1 id='final_amount'></h1>
 
 <script>
@@ -67,4 +67,5 @@
 		final_amount.innerText += ' + $' + `${amount.value}` + ' = $';
 		final_amount.innerText += tip + parseFloat(amount.value.replace('$', ''));	
 	}
+	setInterval(calc, 100);
 </script>

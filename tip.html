@@ -65,11 +65,11 @@
 	var tip = null;
 	var final = null;
 	function calc() {
-		final_amount.innerText = '(tip) $';
+		final_amount.innerText = '((tip) $';
 		tip = Math.round(parseFloat(amount.value.replace('$', '')) / 100 * parseFloat(percent.value.replace('%', ''))*100)/100;
 		final = (tip + parseFloat(amount.value.replace('$', ''))) / parseFloat(people.value);
 		final_amount.innerText += `${tip}`
-		final_amount.innerText += ' + $' + `${amount.value}` + ` / ${people.value}` + ' = $';
+		final_amount.innerText += ' + $' + `${amount.value}` + `) / ${people.value}` + ' = $';
 		final_amount.innerText += final;	
 	}
 	setInterval(calc, 100);
